@@ -2,12 +2,13 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const ServiceModel = require('./Models/Service')
-
 const app = express()
+const dotenv = require('dotenv');
+dotenv.config ();
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb://127.0.0.1:27017/crud');
+mongoose.connect(process.env.URI);
 console.log('connecter sur db')
 
 app.get('/', (req, res) => {
